@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crear Cita</title>
+</head>
+<body>
+    <h1>Crear Cita</h1>
+    <form action="/citas" method="post">
+        <label>Nombre del Paciente:</label>
+        <input type="text" name="nombrePaciente" required="required"/>
+        <br/>
+        <label>Fecha:</label>
+        <input type="date" name="fecha" required="required"/>
+        <br/>
+        <label>Hora:</label>
+        <input type="time" name="hora" required="required"/>
+        <br/>
+        <label>Descripción:</label>
+        <textarea name="descripcion" required="required"></textarea>
+        <br/>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+package com.cita.oladent.service;
+
+import com.cita.oladent.model.Cita;
+import com.cita.oladent.repository.CitaRepository;
+import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+public class CitaServiceTest {
+
+    @Mock
+    private CitaRepository citaRepository;
+
+    @InjectMocks
+    private CitaService citaService;
+
+    public CitaServiceTest() {
+        MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void testGetAllCitas() {
+        Cita cita1 = new Cita();
+        cita1.setNombrePaciente("Juan Pérez");
+
+        Cita cita2 = new Cita();
+        cita2.setNombrePaciente("Ana Gómez");
+
+        List<Cita> citas = Arrays.asList(cita1, cita2);
+
+        when(citaRepository.findAll()).thenReturn(citas);
+
+        List<Cita> result = citaService.getAllCitas();
+
+        assertEquals(2, result.size());
+        verify(citaRepository, times(1)).findAll();
+    }
+}
